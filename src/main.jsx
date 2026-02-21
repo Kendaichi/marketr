@@ -5,12 +5,14 @@ import { RouterProvider } from "react-router-dom";
 import router from "./router.jsx";
 import { ContextProvider } from "./context/userContextProvider.jsx";
 import { Toaster } from "./components/ui/sonner";
+import { Toaster as ToastToaster } from "./components/ui/toaster";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ContextProvider>
       <RouterProvider router={router} />
       <Toaster />
+      <ToastToaster />
     </ContextProvider>
   </React.StrictMode>
 );
