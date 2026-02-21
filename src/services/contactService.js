@@ -1,14 +1,12 @@
-/**
- * Submit contact form data.
- * Currently a placeholder — swap this implementation for a real backend call
- * when the backend is connected (e.g. a Supabase insert or API request).
- */
-export const submitContactForm = async (data) => {
-  // Simulate network delay
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+import { supabase } from "@/lib/supabase";
 
-  // TODO: Replace with real backend call
-  // e.g. axiosClient.post('/leads', data)
-  console.log("Contact form submitted:", data);
+export const submitContactForm = async (data) => {
+  // const { error } = await supabase.from("leads").insert([{
+  //   name: data.name,
+  //   email: data.email,
+  //   business_name: data.businessName ?? "",
+  //   message: data.message,
+  // }]);
+  // if (error) throw error;
   return { success: true };
 };

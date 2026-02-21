@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
@@ -11,22 +12,33 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
+const pageLinks = [
+  { label: "Blog", href: "/blog" },
+  { label: "Case Studies", href: "/case-studies" },
+];
+
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   const scrollTo = (href) => {
     setMobileOpen(false);
-    const el = document.querySelector(href);
-    el?.scrollIntoView({ behavior: "smooth" });
+    if (isHome) {
+      const el = document.querySelector(href);
+      el?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.location.href = `/${href}`;
+    }
   };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
-        <a
-          href="#"
+        <Link
+          to="/"
           className="flex items-center gap-2"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={() => isHome && window.scrollTo({ top: 0, behavior: "smooth" })}
         >
           <img
             src="/logo.jpg"
@@ -34,7 +46,7 @@ const Navbar = () => {
             className="h-9 w-9 rounded-lg object-cover"
           />
           <span className="text-xl font-extrabold text-gradient">marketr.</span>
-        </a>
+        </Link>
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-6">
@@ -46,6 +58,19 @@ const Navbar = () => {
             >
               {l.label}
             </button>
+          ))}
+          {pageLinks.map((l) => (
+            <Link
+              key={l.href}
+              to={l.href}
+              className={`text-sm font-medium transition-colors ${
+                location.pathname.startsWith(l.href)
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {l.label}
+            </Link>
           ))}
           <Button
             size="sm"
@@ -81,6 +106,20 @@ const Navbar = () => {
             >
               {l.label}
             </button>
+          ))}
+          {pageLinks.map((l) => (
+            <Link
+              key={l.href}
+              to={l.href}
+              onClick={() => setMobileOpen(false)}
+              className={`block py-2 text-sm font-medium transition-colors ${
+                location.pathname.startsWith(l.href)
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {l.label}
+            </Link>
           ))}
           <Button
             size="sm"

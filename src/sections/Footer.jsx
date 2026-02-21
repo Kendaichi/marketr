@@ -1,12 +1,22 @@
+import { Link } from "react-router-dom";
 import {
   Instagram,
   Twitter,
-  Linkedin,
   Mail,
   MapPin,
   Phone,
   FacebookIcon,
 } from "lucide-react";
+
+const quickLinks = [
+  { label: "Services", href: "#services" },
+  { label: "About", href: "#about" },
+  { label: "Process", href: "#process" },
+  { label: "Portfolio", href: "#portfolio" },
+  { label: "Contact", href: "#contact" },
+  { label: "Blog", href: "/blog" },
+  { label: "Case Studies", href: "/case-studies" },
+];
 
 const Footer = () => (
   <footer className="bg-foreground text-background py-16">
@@ -32,18 +42,25 @@ const Footer = () => (
         <div>
           <h4 className="font-bold mb-4">Quick Links</h4>
           <ul className="space-y-2 text-sm opacity-70">
-            {["Services", "About", "Process", "Portfolio", "Contact"].map(
-              (l) => (
-                <li key={l}>
-                  <a
-                    href={`#${l.toLowerCase()}`}
+            {quickLinks.map((l) => (
+              <li key={l.label}>
+                {l.href.startsWith("/") ? (
+                  <Link
+                    to={l.href}
                     className="hover:opacity-100 transition-opacity"
                   >
-                    {l}
+                    {l.label}
+                  </Link>
+                ) : (
+                  <a
+                    href={l.href}
+                    className="hover:opacity-100 transition-opacity"
+                  >
+                    {l.label}
                   </a>
-                </li>
-              )
-            )}
+                )}
+              </li>
+            ))}
           </ul>
         </div>
 
