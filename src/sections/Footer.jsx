@@ -92,7 +92,7 @@ const Footer = () => (
           </ul>
           <div className="flex gap-3 mt-4">
             <a
-              href="#"
+              href="https://www.facebook.com/profile.php?id=61585444273921"
               aria-label="Instagram"
               className="opacity-70 hover:opacity-100 transition-opacity"
             >

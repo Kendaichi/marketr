@@ -6,7 +6,9 @@ import Process from "@/sections/Process";
 import Portfolio from "@/sections/Portfolio";
 import Testimonials from "@/sections/Testimonials";
 import Contact from "@/sections/Contact";
+import BlogPreview from "@/sections/BlogPreview";
 import Footer from "@/sections/Footer";
+import MessengerChat from "@/components/MessengerChat";
 
 const Home = () => (
   <div className="min-h-screen gradient-bg">
@@ -18,9 +20,11 @@ const Home = () => (
       <Process />
       <Portfolio />
       <Testimonials />
+      <BlogPreview />
       <Contact />
     </main>
     <Footer />
+    <MessengerChat />
   </div>
 );
 

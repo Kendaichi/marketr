@@ -14,7 +14,7 @@ const navLinks = [
 
 const pageLinks = [
   { label: "Blog", href: "/blog" },
-  { label: "Case Studies", href: "/case-studies" },
+  // { label: "Case Studies", href: "/case-studies" },
 ];
 
 const Navbar = () => {
@@ -38,7 +38,9 @@ const Navbar = () => {
         <Link
           to="/"
           className="flex items-center gap-2"
-          onClick={() => isHome && window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={() =>
+            isHome && window.scrollTo({ top: 0, behavior: "smooth" })
+          }
         >
           <img
             src="/logo.jpg"
